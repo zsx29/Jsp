@@ -3,7 +3,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>3_1_REQUEST</title>
+	<title>3_1_Requestt</title>
 	<%--
 		날짜 : 2021-06-01
 		이름 : 박재형
