@@ -10,10 +10,11 @@
 	String hp   = request.getParameter("hp");
 	String pos  = request.getParameter("pos");
 	String dep  = request.getParameter("dep");
-	// DB 정보
-	String host = "jdbc:mysql://54.180.160.240:3306/woguddldla";
+	
+	//DB 정보
+	String host = "jdbc:mysql://54.180.109.191:3306/woguddldla";
 	String user = "woguddldla";
-	String pass = "1234";
+	String pass = "qkrwogud1!";
 	
 	try{
 		// 1단계 - JDBC 드라이버 로드

@@ -1,7 +1,7 @@
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
-<%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
 
 	// 문자셋 인코딩(한글깨짐 방지)
@@ -14,10 +14,10 @@
 	String pos  = request.getParameter("pos");
 	String dep  = request.getParameter("dep");
 	
-	// DB 정보
-	String host = "jdbc:mysql://54.180.160.240:3306/woguddldla";
+	//DB 정보
+	String host = "jdbc:mysql://54.180.109.191:3306/woguddldla";
 	String user = "woguddldla";
-	String pass = "1234";
+	String pass = "qkrwogud1!";
 	
 	
 	try{

@@ -9,9 +9,9 @@
 	request.setCharacterEncoding("utf-8");
 	String uid = request.getParameter("uid");
 	//DB 정보
-	String host = "jdbc:mysql://54.180.160.240:3306/woguddldla";
+	String host = "jdbc:mysql://54.180.109.191:3306/woguddldla";
 	String user = "woguddldla";
-	String pass = "1234";
+	String pass = "qkrwogud1!";
 	
 	MemberBean mb = new MemberBean();
 	
@@ -59,7 +59,7 @@
 	--%>
 </head>
 <body>
-	<h3>3.update 실습하기</h3>
+	<h1>3.update 실습하기</h1>
 	
 	<a href="./5_2_Select.jsp">직원목록</a>
 	
