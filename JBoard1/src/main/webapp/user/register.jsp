@@ -16,11 +16,12 @@
 	<script src="/JBoard1/js/checkName.js"></script>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	<script src="/JBoard1/js/zipcode.js"></script>
+	<script src="/JBoard1/js/validation.js"></script>
 </head>
 <body>
     <div id="wrapper">
         <section id="user" class="register">
-            <form action="/JBoard1/proc/register.jsp" method="POST">
+            <form action="/JBoard1/proc/register.jsp" id="regForm" method="POST">
                 <table border="1">
                     <caption>사이트 이용정보 입력</caption>
                     <tr>
@@ -56,7 +57,7 @@
                     <tr>
                         <td>별명</td>
                         <td>
-                            <p>공백없이 한글, 영문, 숫자만 입력가능</p>
+                            <p>공백없이 한글, 영문, 숫자만 입력가능</p><br>
                             <input type="text" name="nick" placeholder="닉네임 입력"/>
                             <span class="resultNick" ></span>                            
                         </td>
@@ -94,7 +95,7 @@
 
                 <div>
                     <a href="/JBoard1/user/login.jsp" class="btnCancel">취소</a>
-                    <input type="submit"   class="btnJoin" value="회원가입"/>
+                    <input type="submit" class="btnJoin" value="회원가입"/>
                 </div>
 
             </form>

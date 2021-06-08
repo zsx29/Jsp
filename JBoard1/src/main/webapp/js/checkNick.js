@@ -1,41 +1,35 @@
-/**
- * 아이디 중복 체크
- */
-var regNick = /^[a-z가-힣0-9]{2,10}%/
+var regNick = /^[a-z가-힣0-9]{2,10}$/;
+
+// 최종 유효성 검증에 사용할 상태변수 선언
 var isNickOk = false;
 
-$(function() {
-
-	$('input[name=nick]').focusout(function() {
-
-		var nick = $(this).val();
-		var param = { 'nick': nick }
-
+$(function(){
+    		
+	$('input[name=nick]').focusout(function(){
+		
+		var nick = $(this).val(); 
+		var param = {'nick': nick};
+		    			
 		$.ajax({
-
 			url: '/JBoard1/user/proc/checkNick.jsp',
 			type: 'get',
 			data: param,
-			datatype: 'json',
-			success: function(data) {
-				if (data.result == 1) {
-					$('.resultNick').css('color','red').text('사용중인 닉네임 입니다');
+			dataType: 'json',
+			success: function(data){
+				if(data.result == 1){
+					$('.resultNick').css('color', 'red').text('  이미 사용중인 닉네임 입니다.');
 					isNickOk = false;
-				} else {
+				}else{
 					
 					if(regNick.test(nick)){
-						$('.resultNick').css('color','blue').text('사용가능한 닉네임 입니다');
-						isNickOk = true;
+						$('.resultNick').css('color', 'blue').text('  사용 가능한 닉네임 입니다.');
+						isNickOk = true;	
 					}else{
-						$('.resultNick').css('color','red').text('닉네임은 영문한글 최소 2 ~ 5자 입니다.');
-						isNickOk = false;
+						$('.resultNick').css('color', 'red').text('  닉네임은 영문, 한글, 숫자포함 최소 2 ~ 10자 입니다.');
+						isNickOk = false; 
 					}
-
 				}
-			},
-
-		})
-
+			}    				
+		});
 	});
-
 });
