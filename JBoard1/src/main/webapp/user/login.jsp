@@ -1,4 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	request.setCharacterEncoding("utf-8");
+	String success = request.getParameter("success");
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,11 +12,26 @@
     <link rel="stylesheet" href="/JBoard1/css/style.css"/>
     <link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap" rel="stylesheet">
+	<script>
+		var success = "<%= success%>";
+		
+		if (success == 100) {
+			alert("해당하는 회원이 없습니다! \n아이디, 비밀번호를 다시 확인해 주세요");
+			
+		}else if(success == 101) {
+			alert("먼저 로그인을 하셔야 합니다!");
+			
+		}else if(success == 102){
+			alert("로그아웃 되었습니다!");
+			
+		}
+		
+	</script>
 </head>
 <body>
     <div id="wrapper">
         <section id="user" class="login">
-            <form action="/JBoard1/list.jsp" name="frm1">
+            <form action="/JBoard1/user/proc/login.jsp" method="post">
                 <table border="0">
                     <tr>
                         <td><img src="/JBoard1/img/login_ico_id.png" alt="아이디"/></td>
@@ -22,7 +42,7 @@
                         <td><input type="password" name="pass" placeholder="비밀번호 입력" /></td>
                     </tr>
                 </table>
-                <input type="submit" class="btnLogin" value="로그인" onclick="login()")/>
+                <input type="submit" class="btnLogin" value="로그인"/>
             </form>
 
             <div class="info">

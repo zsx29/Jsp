@@ -13,7 +13,7 @@
         <section id="board" class="write">
             <h3>글쓰기</h3>
             <article>
-                <form action="/JBoard/proc/write.jsp">
+                <form action="/JBoard1/proc/write.jsp" method="post">
                     <table>
                         <tr>
                             <td>제목</td>

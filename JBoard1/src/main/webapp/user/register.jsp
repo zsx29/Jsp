@@ -21,7 +21,7 @@
 <body>
     <div id="wrapper">
         <section id="user" class="register">
-            <form action="/JBoard1/proc/register.jsp" id="regForm" method="POST">
+            <form action="/JBoard1/user/proc/register.jsp" id="regForm" method="POST">
                 <table border="1">
                     <caption>사이트 이용정보 입력</caption>
                     <tr>

@@ -1,3 +1,6 @@
+<%@page import="kr.co.jboard1.db.Sql"%>
+<%@page import="java.sql.PreparedStatement"%>
+<%@page import="kr.co.jboard1.db.DBConfig"%>
 <%@page import="com.google.gson.JsonObject"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
@@ -9,22 +12,16 @@
 	request.setCharacterEncoding("utf-8");
 	String uid = request.getParameter("uid");
 	
-	//DB 정보
-	String host = "jdbc:mysql://54.180.109.191:3306/woguddldla";
-	String user = "woguddldla";
-	String pass = "qkrwogud1!";
 	int count = -1;
 	
 	try{
-		// 1단계
-		Class.forName("com.mysql.jdbc.Driver");
-		// 2단계
-		Connection conn = DriverManager.getConnection(host, user, pass);
+		//1,2단계
+		Connection conn = DBConfig.getInstance().getConnection();
 		// 3단계
-		Statement stmt = conn.createStatement();
+		PreparedStatement psmt = conn.prepareStatement(Sql.SELECT_COUNT_UID);
+		psmt.setString(1, uid);
 		// 4단계
-		String sql = "SELECT COUNT(`uid`) FROM `JBOARD_MEMBER` WHERE `uid`='"+uid+"';";
-		ResultSet rs = stmt.executeQuery(sql);
+		ResultSet rs = psmt.executeQuery();
 		// 5단계
 		if(rs.next()){
 			count = rs.getInt(1);
