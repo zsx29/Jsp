@@ -10,7 +10,11 @@
 		// 프로그램 흐름 종료
 		return;
 	}
-
+	
+	if(mb != null){
+		String uid = request.getParameter("uid");
+	}
+	
 %>
 <!DOCTYPE html>
 <html lang="en">
@@ -58,9 +62,36 @@
             </div>
 
             <!-- 글쓰기 버튼 -->
-            <a href="/JBoard1/write.jsp" class="btnWrite">글쓰기</a>
-
+			   		
+			<% if(mb != null){ %>
+				<% if(mb.equals("zsx29")){ %>
+						<a href="/JBoard1/write.jsp" class="btnWrite">글쓰기</a>
+				<% }else{ %>
+						<a href="/JBoard1/write.jsp" class="btnWrite">글못씁니다 돌아가세요</a>
+				<% } %>
+			<% } %>            		
         </section>
     </div>    
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

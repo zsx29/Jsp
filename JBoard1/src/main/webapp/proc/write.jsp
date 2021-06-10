@@ -21,12 +21,27 @@
 	int maxSize = 1024 * 1024 * 10;  // 최대 파일 허용 용량 : 10mb --> 반드시 제한 해야함 --> 오류잡기
 
 	// 업로드
-
 	MultipartRequest mRequest = new MultipartRequest(request,
 													 path,
 													 maxSize,
 													 "UTF-8",
 													 new DefaultFileRenamePolicy());
+	/*
+		try{
+			MultipartRequest mRequest = new MultipartRequest(request,
+															 path,
+															 maxSize,
+															 "UTF-8",
+															 new DefaultFileRenamePolicy());
+			
+		}catch(excetion e){
+			e.printStackTrace();
+			response.sendRedirect("/JBoard1/write.jsp?success=105");
+			return;
+		}
+	
+		write.jsp 가서 success값 에러발생 코드 작성
+	*/
 
 	String title = mRequest.getParameter("title");
 	String content = mRequest.getParameter("content");
