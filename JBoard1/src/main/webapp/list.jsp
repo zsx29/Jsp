@@ -33,6 +33,7 @@
                 <table border="0">
                     <tr>
                         <th>번호</th>
+                        <th>내용</th>
                         <th>글쓴이</th>
                         <th>날짜</th>
                         <th>조회</th>

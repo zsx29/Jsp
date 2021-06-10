@@ -13,7 +13,7 @@
         <section id="board" class="write">
             <h3>글쓰기</h3>
             <article>
-                <form action="/JBoard1/proc/write.jsp" method="post">
+                <form action="/JBoard1/proc/write.jsp" method="post" enctype="multipart/form-data">
                     <table>
                         <tr>
                             <td>제목</td>
@@ -27,7 +27,7 @@
                         </tr>
                         <tr>
                             <td>첨부</td>
-                            <td><input type="file" name="file"/></td>
+                            <td><input type="file" name="fname" onchange="fileSizeCheck(this)"/></td>
                         </tr>
                     </table>
                     <div>
@@ -40,3 +40,13 @@
     </div>
 </body>
 </html>
+<script>
+
+	// 업로드 용량 제한 함수
+	function fileSizeCheck(input) {
+		if(input.files && input.files[0].size > (1024 * 1024 * 10)){
+			alert("최대 업로드 용량은 10mb 입니다.");
+			input.value = null;
+		}
+	}
+</script>
