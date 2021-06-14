@@ -50,6 +50,7 @@
 			input.value = null;
 		}
 	}
+	
 	// 제목, 내용 입력 함수
 	$(function () {
 		$(".btnWrite").click(function () {
