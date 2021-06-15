@@ -23,6 +23,7 @@
 	
 	// 전송 파라미터 수신
 	String pg = request.getParameter("pg");
+	String uid = request.getParameter("uid");
 	
 	// DAO 객체 가져오기
 	ArticleDao dao = ArticleDao.getInstance();
@@ -69,7 +70,7 @@
                     <tr>
                         <td><%= pageStartNum-- %></td>
                         <td>
-                        	<a href="/JBoard1/view.jsp">
+                        	<a href="/JBoard1/view.jsp?seq=<%= article.getSeq()%>">
                         		<%= article.getTitle() %>
                         	</a>&nbsp;[<%= article.getComment() %>] <!-- 댓글 -->
                         </td>
@@ -83,29 +84,34 @@
 
             <!-- 페이지 네비게이션 -->
             <div class="paging">
+            
             	<% if(groups[0] > 1){ %>
-                	<a href="/JBoard1/list.jsp?pg=<%= groups[0] - 1%>" class="prev">이전</a>
+                     <a href="/JBoard1/list.jsp?pg=<%= groups[0] - 1%>" class="prev">이전</a>
                 <% } %>
                 
                 <% for(int i = groups[0]; i <= groups[1]; i++){ %>
-	                <% if(currentPage == i){ %>
-	                	<a href="/JBoard1/list.jsp?pg=<%= i %>" class="num current"><%= i %></a>         
-	                <% } else { %>
-	                	<a href="/JBoard1/list.jsp?pg=<%= i %>" class="num"><%= i %></a>         
-	                <% } %>
+	                 <a href="/JBoard1/list.jsp?pg=<%= i %>" class="num <%= (currentPage == i) ? "current":"" %>"><%= i %></a>       
                 <% } %>
                 
                 <% if(groups[1] < lastPageNum){ %>       
-                	<a href="/JBoard1/list.jsp?pg=<%= groups[1] + 1%>" class="next">다음</a>
+                	 <a href="/JBoard1/list.jsp?pg=<%= groups[1] + 1%>" class="next">다음</a>
                 <% } %>
+                
             </div>
             <!-- 글쓰기 버튼 -->
-            <a href="/JBoard1/write.jsp" class="btnWrite">글쓰기</a>   	
+            <% if(mb.getUid() != "admin"){ %>
+            
+            	<a href="/JBoard1/write.jsp" class="btnWrite"><%= mb.getNick() %> 글쓰기</a>
+            	
+            <% } else { %>
+            
+            	<a href="/JBoard1/write.jsp" class="btnWrite"></a>
+            	
+            <% } %>
         </section>
     </div>    
 </body>
 </html>
-
 
 
 
