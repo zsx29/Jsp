@@ -23,7 +23,6 @@
 	
 	// 전송 파라미터 수신
 	String pg = request.getParameter("pg");
-	String uid = request.getParameter("uid");
 	
 	// DAO 객체 가져오기
 	ArticleDao dao = ArticleDao.getInstance();
@@ -99,15 +98,11 @@
                 
             </div>
             <!-- 글쓰기 버튼 -->
-            <% if(mb.getUid() != "admin"){ %>
-            
+            <% if(mb.getUid().equals("admin")){ %>
+           
             	<a href="/JBoard1/write.jsp" class="btnWrite"><%= mb.getNick() %> 글쓰기</a>
             	
-            <% } else { %>
-            
-            	<a href="/JBoard1/write.jsp" class="btnWrite"></a>
-            	
-            <% } %>
+			<% } %>
         </section>
     </div>    
 </body>

@@ -28,9 +28,14 @@ public class ArticleBean {
 	public int getParent() {
 		return parent;
 	}
+	// ---------overload------------
 	public void setParent(int parent) {
 		this.parent = parent;
 	}
+	public void setParent(String parent) {
+		this.parent = Integer.parseInt(parent);
+	}
+	// ---------overload------------
 	public int getComment() {
 		return comment;
 	}
