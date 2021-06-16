@@ -72,8 +72,8 @@
     	    <%-- <% out.print("글쓴이 아이디 : " + article.getUid()); %> --%>
             <% if(mb.getUid().equals("admin") || mb.getUid().equals(article.getUid())){ %>
             <div>
-                <a href="#" class="btnDelete">삭제</a>
-                <a href="/JBoard1/modify.jsp" class="btnModify">수정</a>
+                <a href="/JBoard1/proc/articleDelete.jsp?seq=<%= article.getSeq() %>" class="btnDelete">삭제</a>
+                <a href="/JBoard1/articleUpdate.jsp?seq=<%= article.getSeq() %>" class="btnModify">수정</a>
                 <a href="/JBoard1/list.jsp" class="btnList">목록</a>
             </div>  
             <% } else { %>
