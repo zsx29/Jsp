@@ -13,7 +13,7 @@
 	dao.deleteComment(seq);
 	
 	// 댓글 삭제했을때 댓글 카운트 - 1
-	
+	dao.updateCommentCount(parent, -1);
 	
 	
 	

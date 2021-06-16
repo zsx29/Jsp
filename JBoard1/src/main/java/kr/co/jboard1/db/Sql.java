@@ -6,7 +6,7 @@ public class Sql {
 	public static final String SELECT_COUNT_HP      = "SELECT COUNT(`hp`)    FROM `JBOARD_MEMBER` WHERE `hp`=?";
 	public static final String SELECT_COUNT_NICK    = "SELECT COUNT(`nick`)  FROM `JBOARD_MEMBER` WHERE `nick`=?";              
 	public static final String SELECT_COUNT_UID     = "SELECT COUNT(`uid`)   FROM `JBOARD_MEMBER` WHERE `uid`=?";
-	public static final String SELECT_COUNT_ARTICLE = "SELECT COUNT(*) FROM `JBOARD_ARTICLE`;";
+	public static final String SELECT_COUNT_ARTICLE = "SELECT COUNT(*) FROM `JBOARD_ARTICLE` WHERE `parent` = 0;";
 	
 	public static final String SELECT_MEMBER        = "SELECT * FROM `JBOARD_MEMBER` WHERE `uid`=? AND `pass`=PASSWORD(?)";
 	public static final String INSERT_MEMBER        = "INSERT INTO `JBOARD_MEMBER` SET "
@@ -62,11 +62,12 @@ public class Sql {
 													
 												
 	
-	public static final String UPDATE_ARTICLE_HIT   = "UPDATE `JBOARD_ARTICLE` SET `hit`=`hit`+1 WHERE `seq`=?";
-	public static final String UPDATE_COMMENT_COUNT_PLUS = "UPDATE `JBOARD_ARTICLE` SET `comment`=`comment`+1 WHERE `seq`=?";
-	public static final String UPDATE_FILE_DOWNLOAD = "UPDATE `JBOARD_FILE`    SET `download`=`download`+1 WHERE `seq`=?";
+	public static final String UPDATE_ARTICLE_HIT         = "UPDATE `JBOARD_ARTICLE` SET `hit`=`hit`+1 WHERE `seq`=?";
+	public static final String UPDATE_COMMENT_COUNT_PLUS  = "UPDATE `JBOARD_ARTICLE` SET `comment`=`comment`+1 WHERE `seq`=?";
+	public static final String UPDATE_COMMENT_COUNT_MINUS = "UPDATE `JBOARD_ARTICLE` SET `comment`=`comment`-1 WHERE `seq`=?";
+	public static final String UPDATE_FILE_DOWNLOAD       = "UPDATE `JBOARD_FILE`    SET `download`=`download`+1 WHERE `seq`=?";
 	
-	public static final String DELETE_COMMENT       = "DELETE FROM `JBOARD_ARTICLE` WHERE `seq`=?";
+	public static final String DELETE_COMMENT             = "DELETE FROM `JBOARD_ARTICLE` WHERE `seq`=?";
 		
 }
 

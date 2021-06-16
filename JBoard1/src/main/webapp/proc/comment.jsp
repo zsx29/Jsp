@@ -24,7 +24,7 @@
 	dao.insertComment(ab);
 	
 	// 댓글 카운트 + 1
-	dao.updateCommentCountPlus(parent);
+	dao.updateCommentCount(parent, +1);
 	
 	//리다이렉트
 	response.sendRedirect("/JBoard1/view.jsp?seq=" + parent);

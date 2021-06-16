@@ -364,16 +364,21 @@ public class ArticleDao {
 		}
 	}
  	
-    // 댓글 수 증가
-  	public void updateCommentCountPlus(String seq) {
+    // 댓글 카운트
+  	public void updateCommentCount(String seq, int type) {
 
 
+  		PreparedStatement psmt = null;
  		
  		try{
  			// 1, 2단계
  			Connection conn = DBConfig.getInstance().getConnection();
  			// 3 단계
- 			PreparedStatement psmt = conn.prepareStatement(Sql.UPDATE_COMMENT_COUNT_PLUS);
+ 			if(type ==1) {
+ 				psmt = conn.prepareStatement(Sql.UPDATE_COMMENT_COUNT_PLUS); 				
+ 			}else {
+ 				psmt = conn.prepareStatement(Sql.UPDATE_COMMENT_COUNT_MINUS); 				
+ 			}
  			psmt.setString(1, seq);
  			// 4 단계
  			psmt.executeUpdate();
