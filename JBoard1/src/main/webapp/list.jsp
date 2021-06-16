@@ -98,11 +98,8 @@
                 
             </div>
             <!-- 글쓰기 버튼 -->
-            <% if(mb.getUid().equals("admin")){ %>
-           
-            	<a href="/JBoard1/write.jsp" class="btnWrite"><%= mb.getNick() %> 글쓰기</a>
+            	<a href="/JBoard1/write.jsp" class="btnWrite">글쓰기</a>
             	
-			<% } %>
         </section>
     </div>    
 </body>

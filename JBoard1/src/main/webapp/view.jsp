@@ -66,13 +66,24 @@
                     </td>
                 </tr>
             </table>
+            
+            <!-- 관리자, 글쓴이만 삭제, 수정 -->
+	        <%-- <% out.print("로그인 아이디 : " + mb.getUid()); %> --%>
+    	    <%-- <% out.print("글쓴이 아이디 : " + article.getUid()); %> --%>
+            <% if(mb.getUid().equals("admin") || mb.getUid().equals(article.getUid())){ %>
             <div>
                 <a href="#" class="btnDelete">삭제</a>
                 <a href="/JBoard1/modify.jsp" class="btnModify">수정</a>
                 <a href="/JBoard1/list.jsp" class="btnList">목록</a>
             </div>  
-            
+            <% } else { %>
+            <div>
+                <a href="/JBoard1/list.jsp" class="btnList">목록</a>
+            </div>  
+            <% } %>
+           
             <!-- 댓글리스트 -->
+            
             <section class="commentList">
                 <h3>댓글목록</h3>
                 
@@ -84,7 +95,7 @@
                     </span>
                     <textarea name="comment" readonly><%= comment.getContent() %></textarea>
                     
-                    <% if(comment.getUid().equals(mb.getUid())){ %>
+                    <% if(comment.getUid().equals(mb.getUid()) || mb.getUid().equals("admin")){ %>
                     <div>
                         <a href="/JBoard1/proc/commentDelete.jsp?seq=<%= comment.getSeq() %>&parent=<%= comment.getParent() %>">삭제</a>
                         <a href="#">수정</a>                                                
@@ -113,7 +124,7 @@
                 	
                     <textarea name="comment" required></textarea> <!-- required : 댓글이 없을경우 폼 전송 x (검증) -->
                     <div>
-                        <a href="#" class="btnCancel" onclick="clear()">취소</a>
+                        <input type="reset" class="btnCancel" value="초기화">
                         <input type="submit" class="btnWrite" value="작성완료"/>
                     </div>
                 </form>
