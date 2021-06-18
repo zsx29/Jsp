@@ -43,7 +43,7 @@
 						<td>
 							<textarea readonly><%=tb.getTerms()%></textarea>
 							<p>
-								<label><input type="checkbox" name="chk1" />동의합니다.</label>
+								<label><input type="checkbox" id="chk1" name="chk1" />동의합니다.</label>
 							</p>
 						</td>
 					</tr>
@@ -54,14 +54,14 @@
 						<td>
 							<textarea readonly><%=tb.getPrivacy()%></textarea>
 							<p>
-								<label><input type="checkbox" name="chk2" />동의합니다.</label>
+								<label><input type="checkbox" id="chk2" name="chk2" />동의합니다.</label>
 							</p>
 						</td>
 					</tr>
 				</table>
 				<div>
 					<a href="/JBoard1/user/login.jsp">취소</a> 
-					<a href="/JBoard1/user/register.jsp">다음</a> 
+					<a href="#" onclick="send()">다음</a> 
 				</div>
 			</section>
 		</div>
@@ -69,7 +69,9 @@
 	</body>
 </html>
 <script>
+
 	function send() {
+		
 		if (document.getElementById("chk1").checked && document.getElementById("chk2").checked) {
 			
 			location.href = '/JBoard1/user/register.jsp';
@@ -78,7 +80,6 @@
 			alert("사이트 이용약관, 개인정보 취급방침 체크");
 		}
 	}
-
 </script>
 
 

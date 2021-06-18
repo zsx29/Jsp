@@ -27,7 +27,7 @@
 	dao.updateCommentCount(parent, +1);
 	
 	//리다이렉트
-	response.sendRedirect("/JBoard1/view.jsp?seq=" + parent);
+	response.sendRedirect("/JBoard1/view.jsp?seq="+parent);
 
 
 %>

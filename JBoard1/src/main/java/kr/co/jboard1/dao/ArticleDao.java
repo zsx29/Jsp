@@ -233,6 +233,7 @@ public class ArticleDao {
 	
 	// 게시물 가져오기
 	public ArticleBean selectArticle(String seq) {
+
 		
 		// ArticleBean 생성
 		ArticleBean article = new ArticleBean();
@@ -344,6 +345,8 @@ public class ArticleDao {
 	// 조회수 증가
  	public void updateArticleHit(String seq) {
 
+
+
 		
 		try{
 			// 1, 2단계
@@ -396,18 +399,90 @@ public class ArticleDao {
   	// 댓글 삭제
   	public void deleteComment(String seq) {
 
+
 		try {
+			
 			Connection conn = DBConfig.getInstance().getConnection();
 			PreparedStatement psmt = conn.prepareStatement(Sql.DELETE_COMMENT);
-			psmt.setString(1, seq);
 			
+			psmt.setString(1, seq);
 			psmt.executeUpdate();
+		
+			conn.close();
+		}catch (Exception e) {
+			
+			e.printStackTrace();
+			
+		}
+		
+	}
+ 	
+  	// 댓글 수정
+  	public int updateComment(String content, String seq) {
+		
+		int result = 0;
+		
+		try {
+			Connection conn = DBConfig.getInstance().getConnection();
+			PreparedStatement psmt = conn.prepareStatement(Sql.UPDATE_COMMENT);
+			psmt.setString(1, content);
+			psmt.setString(2, seq);
+			
+			result = psmt.executeUpdate();
 			conn.close();
 		}catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		return result;
 	}
- 	
+  	
+  	// 글 수정
+  	public void updateAritcle(String title, String content, String seq){
+
+  		
+  		try {
+  			
+  			Connection conn = DBConfig.getInstance().getConnection();
+  			PreparedStatement psmt = conn.prepareStatement(Sql.UPDATE_ARTICLE);
+  			
+  			psmt.setString(1, title);
+  			psmt.setString(2, content);
+ 			psmt.setString(3, seq);
+  			psmt.executeUpdate();
+  			
+  			conn.close();
+  		
+  			
+  		}catch(Exception e) {
+  			
+  			e.printStackTrace();
+  		}
+  	}
+  	
+  	// 글 삭제
+  	public void deleteArticle(String seq, String parent) {
+
+  		
+  		try {
+			
+			Connection conn = DBConfig.getInstance().getConnection();
+			PreparedStatement psmt = conn.prepareStatement(Sql.DELETE_ARTICLE);
+			
+			psmt.setString(1, seq);
+			psmt.setString(2, parent);
+			psmt.executeUpdate();
+			
+		
+			conn.close();
+		}catch (Exception e) {
+			
+			e.printStackTrace();
+			
+		}
+  		
+  	}
+  	
 }
 
 
