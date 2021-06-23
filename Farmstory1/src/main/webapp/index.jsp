@@ -1,5 +1,10 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
+<%
+	String title = request.getParameter("title");
+%>
+<!-- image-slider -->
+
 <script>
     $(function(){
 
@@ -15,6 +20,8 @@
     });
 </script>
 <main>
+
+	<!-- slider-start -->
     <div class="slider">
         <ul>
             <li><img src="/Farmstory1/img/main_slide_img1.jpg" alt="슬라이더1"></li>
@@ -28,10 +35,16 @@
             <img src="/Farmstory1/img/main_banner_img.png" alt="과일"/>
         </div>
     </div>
+    <!-- slider-end -->
+    
+    <!-- quick-start -->
     <div class="quick">
         <a href="#"><img src="/Farmstory1/img/main_banner_sub1_tit.png" alt="오늘의 식단"></a>
         <a href="#"><img src="/Farmstory1/img/main_banner_sub2_tit.png" alt="나도 요리사"></a>                
     </div>
+    <!-- quick-end -->
+    
+    <!-- latest-start -->
     <div class="latest">
         <div>
             <a href="#"><img src="/Farmstory1/img/main_latest1_tit.png" alt="텃밭 가꾸기"/></a>
@@ -39,28 +52,8 @@
             <table border="0">
                 <tr>
                     <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
+                    <td><a href="#"><%= aritcle.getTitle() %></a></td>
+                    <td><%= article.getRdate().subString(2, 10) %></td>
                 </tr>
             </table>
         </div>
@@ -128,7 +121,9 @@
         </div>
         
     </div>
-
+    <!-- latest-end -->
+    
+    <!-- info-start -->
     <div class="info">
         <div>
             <img src="/Farmstory1/img/main_sub2_cs_tit.png" class="tit" alt="고객센터 안내"/>
@@ -175,6 +170,7 @@
             </div>
         </div>
     </div>
+    <!-- info-end -->
 </main>
 <%@ include file="./_footer.jsp" %>
 

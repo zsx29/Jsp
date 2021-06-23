@@ -87,6 +87,9 @@
 %>
 <jsp:include page="<%= path %>"/>
 <section id="board" class="view">
+
+	<!-- 글보기 -->
+
     <h3>글보기</h3>
     <table>
         <tr>

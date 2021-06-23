@@ -3,7 +3,7 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_header.jsp" %>
 <%
-	request.setCharacterEncoding("utf-8");
+
 	String seq   = request.getParameter("seq");
 	String group = request.getParameter("group");
 	String cate  = request.getParameter("cate");
@@ -16,7 +16,10 @@
 <section id="board" class="modify">
     <h3>글수정</h3>
     <article>
-        <form action="/Farmstory1/board/proc/modify.jsp?seq=<%= seq %>&group=<%= group %>&cate=<%= cate %>">
+        <form action="/Farmstory1/board/proc/modify.jsp">
+			<input type="hidden" value="<%= seq %>" name="seq">
+        	<input type="hidden" value="<%= cate %>" name="cate">
+        	<input type="hidden" value="<%= group %>" name="group">
             <table>
                 <tr>
                     <td>제목</td>

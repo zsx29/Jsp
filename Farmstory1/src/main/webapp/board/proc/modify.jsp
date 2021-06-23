@@ -10,6 +10,6 @@
 
 	ArticleDao.getInstance().updateArticle(title, content, seq, cate);
 	
-
+	// 리다이렉트
 	response.sendRedirect("/Farmstory1/board/list.jsp?group="+group+"&cate="+cate);
 %>
