@@ -1,6 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	request.setCharacterEncoding("utf-8");
 	String cate = request.getParameter("cate");
 %>
 <div id="sub">
@@ -15,9 +14,13 @@
         </aside>
         <article>
             <nav>
-                <img src="/Farmstory1/img/sub_nav_tit_cate4_tit1.png" alt="이벤트"/>
+                <img src="/Farmstory1/img/sub_nav_tit_cate4_<%= cate %>.png" alt="이벤트"/>
                 <p>
-                    HOME > 이벤트 > <em>이벤트</em>
+                    HOME > 이벤트 > 
+                    <% if(cate.equals("event")){ %>
+                    	<em>이벤트</em>
+                    <% } %>
+                    
                 </p>
             </nav>
 
