@@ -63,8 +63,8 @@
 
 <%
 
-
 	request.setCharacterEncoding("utf-8");
+
 	String group = request.getParameter("group");
 	String cate  = request.getParameter("cate");
 	String path = "./_aside_"+group+".jsp";
@@ -89,8 +89,6 @@
 	
 	// 댓글 가져오기
 	List<ArticleBean> comments = dao.selectComments(seq);
-	
-	
 	
 %>
 

@@ -1,8 +1,9 @@
-/* 전체 스타일 초기화 */
+/* �쟾泥� �뒪���씪 珥덇린�솕 */
 * {
     margin: 0;
     padding: 0;
-    font: normal 12px '돋움';
+    font: normal 12px '�룍��';
+    font-family: 'Nanum Gothic', sans-serif;
 }
 ul, ol {list-style: none;}
 a {text-decoration: none; color: #111;}
@@ -14,7 +15,7 @@ input, textarea {outline: none;}
     margin: 0 auto;
 }
 
-/* 헤더영역 */
+/* �뿤�뜑�쁺�뿭 */
 header {
     position: relative;
     width: 100%;
@@ -85,7 +86,7 @@ header > .gnb > li:nth-child(5) > a:hover {background-image: url('../img/head_me
 
 
 
-/* 푸터영역 */
+/* �뫖�꽣�쁺�뿭 */
 footer {
     width: 100%;
     height: 120px;
@@ -107,7 +108,7 @@ footer > p > em {
     font-weight: bold;
 }
 
-/* 메인(index) */
+/* 硫붿씤(index) */
 main {
     width: 100%;
     height: auto;
@@ -118,7 +119,7 @@ main > div {
     margin-top: 10px;
 }
 
-/* 메인 - slider */
+/* 硫붿씤 - slider */
 main > .slider {
     position: relative;
     height: 312px;
@@ -159,7 +160,7 @@ main > .slider > .banner > img:nth-child(3) {
     background: #fff;
 }
 
-/* 메인 - quick */
+/* 硫붿씤 - quick */
 main > .quick {
     height: 74px;
     overflow: hidden;
@@ -176,7 +177,7 @@ main > .quick > a {
 main > .quick > a:nth-child(1) {background-image: url('../img/main_banner_sub1_bg.jpg');}
 main > .quick > a:nth-child(2) {background-image: url('../img/main_banner_sub2_bg.jpg');}
 
-/* 메인 - latest */
+/* 硫붿씤 - latest */
 main > .latest {
     height: 186px;
     overflow: hidden;
@@ -216,7 +217,7 @@ main > .latest table tr > td > a{
 }
 
 
-/* 메인 - info */
+/* 硫붿씤 - info */
 main > .info {
     height: 154px;
     overflow: hidden;
@@ -260,7 +261,7 @@ main > .info > div > .account {
     line-height: 26px;
 }
 
-/* 탭 커스텀 */
+/* �꺆 而ㅼ뒪�� */
 .ui-widget.ui-widget-content {
     border: none;
 }
@@ -290,7 +291,7 @@ main > .info > div > .account {
 }
 
 
-/* 서브페이지 공통 */
+/* �꽌釉뚰럹�씠吏� 怨듯넻 */
 #sub {
     width: 100%;
     height: auto;
@@ -383,7 +384,7 @@ main > .info > div > .account {
     color: #91BA15;
 }
 
-/* 팜스토리 소개 */
+/* �뙗�뒪�넗由� �냼媛� */
 #sub > .cate1 .lnb > li:nth-child(1) > a {background-image: url('../img/sub_cate1_lnb1.png');}
 #sub > .cate1 .lnb > li:nth-child(2) > a {background-image: url('../img/sub_cate1_lnb2.png');}
 #sub > .cate1 .lnb > li:nth-child(1) > a:hover {background-image: url('../img/sub_cate1_lnb1_ov.png');}
@@ -391,12 +392,12 @@ main > .info > div > .account {
 #sub > .cate1 .lnb > li:nth-child(1).on > a {background-image: url('../img/sub_cate1_lnb1_ov.png');}
 #sub > .cate1 .lnb > li:nth-child(2).on > a {background-image: url('../img/sub_cate1_lnb2_ov.png');}
 
-/* 장보기 */
+/* �옣蹂닿린 */
 #sub > .cate2 .lnb > li:nth-child(1) > a {background-image: url('../img/sub_cate2_lnb1.png');}
 #sub > .cate2 .lnb > li:nth-child(1) > a:hover {background-image: url('../img/sub_cate2_lnb1_ov.png');}
 #sub > .cate2 .lnb > li:nth-child(1).on > a {background-image: url('../img/sub_cate2_lnb1_ov.png');}
 
-/* 농작물 이야기 */
+/* �냽�옉臾� �씠�빞湲� */
 #sub > .cate3 .lnb > li:nth-child(1) > a {background-image: url('../img/sub_cate3_lnb1.png');}
 #sub > .cate3 .lnb > li:nth-child(2) > a {background-image: url('../img/sub_cate3_lnb2.png');}
 #sub > .cate3 .lnb > li:nth-child(3) > a {background-image: url('../img/sub_cate3_lnb3.png');}
@@ -407,12 +408,12 @@ main > .info > div > .account {
 #sub > .cate3 .lnb > li:nth-child(2).on > a {background-image: url('../img/sub_cate3_lnb2_ov.png');}
 #sub > .cate3 .lnb > li:nth-child(3).on > a {background-image: url('../img/sub_cate3_lnb3_ov.png');}
 
-/* 이벤트 */
+/* �씠踰ㅽ듃 */
 #sub > .cate4 .lnb > li:nth-child(1) > a {background-image: url('../img/sub_cate4_lnb1.png');}
 #sub > .cate4 .lnb > li:nth-child(1) > a:hover {background-image: url('../img/sub_cate4_lnb1_ov.png');}
 #sub > .cate4 .lnb > li:nth-child(1).on > a {background-image: url('../img/sub_cate4_lnb1_ov.png');}
 
-/* 커뮤니티 */
+/* 而ㅻ�ㅻ땲�떚 */
 #sub > .cate5 .lnb > li:nth-child(1) > a {background-image: url('../img/sub_cate5_lnb1.png');}
 #sub > .cate5 .lnb > li:nth-child(2) > a {background-image: url('../img/sub_cate5_lnb2.png');}
 #sub > .cate5 .lnb > li:nth-child(3) > a {background-image: url('../img/sub_cate5_lnb3.png');}
@@ -429,8 +430,10 @@ main > .info > div > .account {
 #sub > .cate5 .lnb > li:nth-child(4).on > a {background-image: url('../img/sub_cate5_lnb4_ov.png');}
 #sub > .cate5 .lnb > li:nth-child(5).on > a {background-image: url('../img/sub_cate5_lnb5_ov.png');}
 
-/* 회원-로그인 */
+/* �쉶�썝-濡쒓렇�씤 */
 #user {}
+
+
 #user.login {
     width: 360px;
     height: auto;
@@ -482,7 +485,12 @@ main > .info > div > .account {
     float: right;
 }
 
-/* 회원-약관 */
+.loginDone{
+	font-size: 3rem;
+	text-align: center;
+}
+
+/* �쉶�썝-�빟愿� */
 #user.terms {
     width: 600px;
     margin: 60px auto;            
@@ -530,7 +538,7 @@ main > .info > div > .account {
 #user.terms > div > a:nth-child(1) {background: #fdfdfd;}
 #user.terms > div > a:nth-child(2) {background: #e9e9e9;}
 
-/* 회원-회원가입 */
+/* �쉶�썝-�쉶�썝媛��엯 */
 #user.register {
     width: 600px;
     height: auto;
@@ -599,7 +607,7 @@ main > .info > div > .account {
     color: #111;
 }
 
-/* 게시판 - 공통 */
+/* 寃뚯떆�뙋 - 怨듯넻 */
 #board {
     width: 720px;
     margin: 60px auto;            
@@ -650,7 +658,7 @@ main > .info > div > .account {
 #board .btnModify { padding: 8px; border: 1px solid #bebebe; background: #fdfdfd; color: #111;}
 #board .btnList   { padding: 8px; border: 1px solid #bebebe; background: #fdfdfd; color: #111;}
 
-/* 게시판 - 글목록 */
+/* 寃뚯떆�뙋 - 湲�紐⑸줉 */
 #board.list {
     position: relative;
 }
@@ -689,7 +697,7 @@ main > .info > div > .account {
     bottom: 14px;
     right: 0;
 }
-/* 게시판-글보기 */
+/* 寃뚯떆�뙋-湲�蹂닿린 */
 #board.view > div {
     padding: 16px 0;
     text-align: right;
@@ -740,14 +748,14 @@ main > .info > div > .account {
     text-align: right;
 }
 
-/* 게시판-글쓰기 */
+/* 寃뚯떆�뙋-湲��벐湲� */
 #board.write {}
 #board.write form > div {
     margin-top: 10px;
     text-align: right;
 }
 
-/* 게시판-글수정 */
+/* 寃뚯떆�뙋-湲��닔�젙 */
 #board.modify form > div {
     margin-top: 10px;
     text-align: right;

@@ -405,6 +405,7 @@ public class ArticleDao {
 	}
 	
 	public List<ArticleBean> selectLatests() {
+
 		
 		
 		List<ArticleBean> latests = new ArrayList<>();
@@ -431,6 +432,11 @@ public class ArticleDao {
 		}catch(Exception e) {
 			
 			e.printStackTrace();
+			
+		}finally {
+			
+			System.out.println("에러 발생...");
+			
 		}
 		
 		return latests;

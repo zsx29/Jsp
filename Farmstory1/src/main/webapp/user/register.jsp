@@ -12,7 +12,7 @@
 <script src="/Farmstory1/js/validation.js"></script>
 
 <section id="user" class="register">
-    <form action="/Farmstory1/user/proc/register.jsp" method="POST">
+    <form action="/Farmstory1/user/proc/register.jsp" id="registerForm" method="POST">
         <table border="1">
             <caption>사이트 이용정보 입력</caption>
             <tr>
@@ -56,12 +56,14 @@
                 <td>E-Mail</td>
                 <td>
                     <input type="email" name="email" placeholder="이메일 입력"/>
+                    <span class="resultEmail"></span>
                 </td>
             </tr>
             <tr>
                 <td>휴대폰</td>
                 <td>
                     <input type="text" name="hp" placeholder="- 포함 13자리 입력" minlength="13" maxlength="13" />
+                    <span class="resultHp"></span>
                 </td>
             </tr>
             <tr>
@@ -83,9 +85,10 @@
 
         <div>
             <a href="/Farmstory1/user/login.jsp" class="btnCancel">취소</a>
-            <input type="submit"   class="btnJoin" value="회원가입"/>
+            <input type="submit" class="btnJoin" value="회원가입"/>
         </div>
 
     </form>
 </section>
+
 <%@ include file="../_footer.jsp" %>

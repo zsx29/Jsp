@@ -27,6 +27,8 @@
 		e.printStackTrace();
 	}
 %>
+
+
 <section id="user" class="terms">
     <table>
         <caption>사이트 이용약관</caption>
@@ -34,7 +36,7 @@
             <td>
                 <textarea readonly><%= tb.getTerms() %></textarea>
                 <p>
-                    <label><input type="checkbox" name="chk1"/>동의합니다.</label>
+                    <label><input type="checkbox" id="chk1" name="chk1"/>동의합니다.</label>
                 </p>
             </td>
         </tr>
@@ -45,14 +47,28 @@
             <td>
                 <textarea readonly><%= tb.getPrivacy() %></textarea>
                 <p>
-                    <label><input type="checkbox" name="chk2"/>동의합니다.</label>
+                    <label><input type="checkbox" id="chk2" name="chk2"/>동의합니다.</label>
                 </p>
             </td>
         </tr>
     </table>
     <div>
         <a href="/Farmstory1/user/login.jsp">취소</a>
-        <a href="/Farmstory1/user/register.jsp">다음</a>
+        <a href="#" onclick="terms()">다음</a>
     </div>
 </section>
+<script>
+
+	function terms() {
+		
+		if(document.getElementById("chk1").checked && document.getElementById("chk2").checked){
+			
+			location.href="/Farmstory1/user/register.jsp";
+		}else{
+			
+			alert("사이트 이용약관, 개인정보 취급방침 동의체크");
+		}
+	}
+	
+</script>
 <%@ include file="../_footer.jsp" %>

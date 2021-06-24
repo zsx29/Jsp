@@ -4,7 +4,7 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
 <%
-	
+
 	// 최신글 가져오기
 	List<ArticleBean> latests = ArticleDao.getInstance().selectLatests();
 
@@ -53,6 +53,7 @@
     <!-- quick-end -->
     
     <!-- latest-start -->
+
     <div class="latest">
         <div>
             <a href="/Farmstory1/board/list.jsp?group=croptalk&cate=grow"><img src="/Farmstory1/img/main_latest1_tit.png" alt="텃밭 가꾸기"/></a>

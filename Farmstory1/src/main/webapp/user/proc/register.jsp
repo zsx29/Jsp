@@ -45,7 +45,7 @@
 	}
 
 	// 로그인 페이지로 리다이렉트
-	response.sendRedirect("/Farmstory1/user/login.jsp");
+	response.sendRedirect("/Farmstory1/user/loginDone.jsp");
 %>
 
 
