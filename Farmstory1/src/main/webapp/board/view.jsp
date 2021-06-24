@@ -3,6 +3,8 @@
 <%@page import="kr.co.farmstory1.dao.ArticleDao"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_header.jsp" %>
+
+
 <script>
 	jQuery(function(){
 		$('.btnCommentDel').click(function(){
@@ -58,7 +60,10 @@
 		
 	});
 </script>
+
 <%
+
+
 	request.setCharacterEncoding("utf-8");
 	String group = request.getParameter("group");
 	String cate  = request.getParameter("cate");
@@ -84,7 +89,12 @@
 	
 	// 댓글 가져오기
 	List<ArticleBean> comments = dao.selectComments(seq);
+	
+	
+	
 %>
+
+
 <jsp:include page="<%= path %>"/>
 <section id="board" class="view">
 
@@ -114,13 +124,14 @@
     </table>
     <div>
         <% if(mb.getUid().equals(article.getUid())){ %>
-        	<a href="/Farmstory1/board/proc/delete.jsp?seq=<%= article.getSeq() %>&cate=<%= cate %>&group=<%= group %>" class="btnDelete">삭제</a>
+        	<a href="/Farmstory1/board/proc/delete.jsp?seq=<%= article.getSeq() %>&parent=<%= article.getSeq() %>&cate=<%= cate %>&group=<%= group %>" class="btnDelete">삭제</a>
         	<a href="/Farmstory1/board/modify.jsp?group=<%= group %>&cate=<%= cate %>&seq=<%= article.getSeq() %>" class="btnModify">수정</a>
         <% } %>
-        <a href="/Farmstory1/board/list.jsp?group=<%= group %>&cate=<%= cate %>" class="btnList">목록</a>
+        	<a href="/Farmstory1/board/list.jsp?group=<%= group %>&cate=<%= cate %>" class="btnList">목록</a>
     </div>  
     
     <!-- 댓글리스트 -->
+    
     <section class="commentList">
         <h3>댓글목록</h3>
         
@@ -135,7 +146,7 @@
             <% if(comment.getUid().equals(mb.getUid())){ %>
             <div>
                 <a href="/Farmstory1/board/proc/commentDelete.jsp?group=<%= group %>&cate=<%= cate %>&seq=<%= comment.getSeq() %>&parent=<%= comment.getParent() %>" class="btnCommentDel">삭제</a>
-                <a href="#" class="btnCommentModify">수정</a>
+                <a href="/Farmstory1/board/proc/commentUpdate.jsp?group=<%= group %>&cate=<%= cate %>&seq=<%= comment.getSeq() %>&parent=<%= comment.getParent() %>" class="btnCommentModify">수정</a>
             </div>
             <% } %>
         </article>
@@ -152,8 +163,9 @@
     <section class="commentForm">
         <h3>댓글쓰기</h3>
         <form action="/Farmstory1/board/proc/comment.jsp" method="post">
-        	<input type="hidden" name="group" value="<%= group %>"/>
+        	<input type="hidden" name="seq" value="<%= article.getSeq() %>"/>
         	<input type="hidden" name="cate" value="<%= cate %>"/>
+        	<input type="hidden" name="group" value="<%= group %>"/>
         	<input type="hidden" name="parent" value="<%= article.getSeq() %>"/>
         	<input type="hidden" name="uid" value="<%= mb.getUid() %>"/>
             <textarea name="comment" required></textarea>

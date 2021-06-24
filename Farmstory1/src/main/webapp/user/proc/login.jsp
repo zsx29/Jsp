@@ -1,3 +1,5 @@
+
+<%@page import="kr.co.farmstory1.dao.ArticleDao"%>
 <%@page import="kr.co.farmstory1.db.Sql"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="kr.co.farmstory1.db.DBConfig"%>
@@ -49,7 +51,7 @@
 	}catch(Exception e){
 		e.printStackTrace();
 	}
-
+	
 	// 세션 처리
 	if(mb != null){
 		// 회원일 경우

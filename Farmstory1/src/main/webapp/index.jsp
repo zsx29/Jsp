@@ -1,10 +1,17 @@
+<%@page import="java.util.List"%>
+<%@page import="kr.co.farmstory1.dao.ArticleDao"%>
+<%@page import="kr.co.farmstory1.bean.ArticleBean"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
 <%
-	String title = request.getParameter("title");
-%>
-<!-- image-slider -->
+	
+	// 최신글 가져오기
+	List<ArticleBean> latests = ArticleDao.getInstance().selectLatests();
 
+%>
+
+
+<!-- image-slider -->
 <script>
     $(function(){
 
@@ -19,6 +26,7 @@
 
     });
 </script>
+
 <main>
 
 	<!-- slider-start -->
@@ -39,84 +47,50 @@
     
     <!-- quick-start -->
     <div class="quick">
-        <a href="#"><img src="/Farmstory1/img/main_banner_sub1_tit.png" alt="오늘의 식단"></a>
-        <a href="#"><img src="/Farmstory1/img/main_banner_sub2_tit.png" alt="나도 요리사"></a>                
+        <a href="/Farmstory1/board/list.jsp?group=community&cate=menu"><img src="/Farmstory1/img/main_banner_sub1_tit.png" alt="오늘의 식단"></a>
+        <a href="/Farmstory1/board/list.jsp?group=community&cate=chef"><img src="/Farmstory1/img/main_banner_sub2_tit.png" alt="나도 요리사"></a>                
     </div>
     <!-- quick-end -->
     
     <!-- latest-start -->
     <div class="latest">
         <div>
-            <a href="#"><img src="/Farmstory1/img/main_latest1_tit.png" alt="텃밭 가꾸기"/></a>
+            <a href="/Farmstory1/board/list.jsp?group=croptalk&cate=grow"><img src="/Farmstory1/img/main_latest1_tit.png" alt="텃밭 가꾸기"/></a>
             <img src="/Farmstory1/img/main_latest1_img.jpg" alt="이미지"/>
             <table border="0">
+            	<% for(int i = 0; i < 5; i++){ %>
                 <tr>
                     <td>></td>
-                    <td><a href="#"><%= aritcle.getTitle() %></a></td>
-                    <td><%= article.getRdate().subString(2, 10) %></td>
+                    <td><a href="/Farmstory1/board/view.jsp?group=croptalk&cate=<%= latests.get(i).getCate() %>&seq=<%= latests.get(i).getSeq() %>"><%= latests.get(i).getTitle() %></a></td>
+                    <td><%= latests.get(i).getRdate() %></td>
                 </tr>
+                <% } %>
             </table>
         </div>
         <div>
-            <a href="#"><img src="/Farmstory1/img/main_latest2_tit.png" alt="귀농학교"/></a>
+            <a href="/Farmstory1/board/list.jsp?group=croptalk&cate=school"><img src="/Farmstory1/img/main_latest2_tit.png" alt="귀농학교"/></a>
             <img src="/Farmstory1/img/main_latest2_img.jpg" alt="이미지"/>
             <table border="0">
+            	<% for(int i = 5; i < 10; i++){ %>
                 <tr>
                     <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
+                    <td><a href="/Farmstory1/board/view.jsp?group=croptalk&cate=<%= latests.get(i).getCate() %>&seq=<%= latests.get(i).getSeq() %>"><%= latests.get(i).getTitle() %></a></td>
+                    <td><%= latests.get(i).getRdate() %></td>
                 </tr>
-                <tr>
-                    <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
-                </tr>
+                <% } %>
             </table>
         </div>
         <div>
-            <a href="#"><img src="/Farmstory1/img/main_latest3_tit.png" alt="농작물 이야기"/></a>
+            <a href="/Farmstory1/board/list.jsp?group=croptalk&cate=story"><img src="/Farmstory1/img/main_latest3_tit.png" alt="농작물 이야기"/></a>
             <img src="/Farmstory1/img/main_latest3_img.jpg" alt="이미지"/>
             <table border="0">
+            	<% for(int i = 10; i < 15; i++){ %>
                 <tr>
                     <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
+                    <td><a href="/Farmstory1/board/view.jsp?group=croptalk&cate=<%= latests.get(i).getCate() %>&seq=<%= latests.get(i).getSeq() %>"><%= latests.get(i).getTitle() %></a></td>
+                    <td><%= latests.get(i).getRdate() %></td>
                 </tr>
-                <tr>
-                    <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
-                </tr>
-                <tr>
-                    <td>></td>
-                    <td><a href="#">토마토! 건강하게 길러서 안심하고 먹자</a></td>
-                    <td>20-12-22</td>
-                </tr>
+                <% } %>
             </table>
         </div>
         
@@ -127,7 +101,6 @@
     <div class="info">
         <div>
             <img src="/Farmstory1/img/main_sub2_cs_tit.png" class="tit" alt="고객센터 안내"/>
-
         </div>
         <div>
             <img src="/Farmstory1/img/main_sub2_account_tit.png" class="tit" alt="계좌안내"/>
@@ -147,25 +120,26 @@
                     <li><a href="#tabs-3">자주묻는 질문</a></li>
                 </ul>
                 <div id="tabs-1">
+                	<% for(int i = 15; i < 18; i++){ %>
                     <ul>
-                        <li>· 홈페이지 오픈 기념 이벤트를 진행합니다.</li>
-                        <li>· 홈페이지 오픈 기념 이벤트를 진행합니다.</li>
-                        <li>· 홈페이지 오픈 기념 이벤트를 진행합니다.</li>
+                        <li><a href="/Farmstory1/board/view.jsp?group=community&cate=<%= latests.get(i).getCate() %>&seq=<%= latests.get(i).getSeq() %>"><%= latests.get(i).getTitle() %></a></li>
                     </ul>
+                    <% } %>
                 </div>
                 <div id="tabs-2">
+                	<% for(int i = 18; i < 21; i++){ %>
                     <ul>
-                        <li>· 홈페이지 이용 관련 불편사항을 들려주세요.</li>
-                        <li>· 홈페이지 이용 관련 불편사항을 들려주세요.</li>
-                        <li>· 홈페이지 이용 관련 불편사항을 들려주세요.</li>
+                        <li><a href="/Farmstory1/board/view.jsp?group=community&cate=<%= latests.get(i).getCate() %>&seq=<%= latests.get(i).getSeq() %>"><%= latests.get(i).getTitle() %></a></li>
+
                     </ul>
+                    <% } %>
                 </div>
                 <div id="tabs-3">
+                	<% for(int i = 21; i < 24; i++){ %>
                     <ul>
-                        <li>· 홈페이지를 오픈하였습니다.</li>
-                        <li>· 홈페이지를 오픈하였습니다.</li>
-                        <li>· 홈페이지를 오픈하였습니다.</li>
-                    </ul>
+                        <li><a href="/Farmstory1/board/view.jsp?group=community&cate=<%= latests.get(i).getCate() %>&seq=<%= latests.get(i).getSeq() %>"><%= latests.get(i).getTitle() %></a></li>
+					</ul>
+                    <% } %>
                 </div>
             </div>
         </div>

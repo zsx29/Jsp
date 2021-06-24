@@ -4,10 +4,13 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import kr.co.farmstory1.bean.ArticleBean;
 import kr.co.farmstory1.bean.FileBean;
+import kr.co.farmstory1.bean.MemberBean;
 import kr.co.farmstory1.db.DBConfig;
 import kr.co.farmstory1.db.Sql;
 
@@ -100,21 +103,25 @@ public class ArticleDao {
 	public void insertArticle() {}
 	
 	public void insertComment(ArticleBean comment) {
+		
 		try{
 			// 1,2 단계
 			Connection conn = DBConfig.getInstance().getConnection();
 			// 3 단계
 			PreparedStatement psmt = conn.prepareStatement(Sql.INSERT_COMMENT);
 			psmt.setInt(1, comment.getParent());
-			psmt.setString(2, comment.getContent());
-			psmt.setString(3, comment.getUid());
-			psmt.setString(4, comment.getRegip());
+			psmt.setString(2, comment.getCate());
+			psmt.setString(3, comment.getContent());
+			psmt.setString(4, comment.getUid());
+			psmt.setString(5, comment.getRegip());
 			// 4 단계
 			psmt.executeUpdate();
 			// 5 단계
 			// 6 단계
 			conn.close();
+			
 		}catch(Exception e){
+			
 			e.printStackTrace();
 		}
 	}
@@ -367,11 +374,14 @@ public class ArticleDao {
 		}
 	}
 	
-	public void deleteArticle(String seq) {
+	public void deleteArticle(String seq, String parent) {
+
 		try {
 			Connection conn = DBConfig.getInstance().getConnection();
 			PreparedStatement psmt = conn.prepareStatement(Sql.DELETE_ARTICLE);
 			psmt.setString(1, seq);
+			psmt.setString(2, parent);
+
 			
 			psmt.executeUpdate();
 			conn.close();
@@ -394,7 +404,59 @@ public class ArticleDao {
 		}
 	}
 	
+	public List<ArticleBean> selectLatests() {
+		
+		
+		List<ArticleBean> latests = new ArrayList<>();
+		
+		try {
+			
+			Connection conn = DBConfig.getInstance().getConnection();
+			PreparedStatement psmt = conn.prepareStatement(Sql.SELECT_LATESTS);
+			ResultSet rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				ArticleBean article = new ArticleBean();
+			
+				article.setSeq(rs.getInt(1));
+				article.setCate(rs.getString(4));
+				article.setTitle(rs.getString(5));
+				article.setRdate(rs.getString(11).substring(2, 10));
+				
+				latests.add(article);
+				
+			}
+			
+		}catch(Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+		return latests;
+	}
+
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
