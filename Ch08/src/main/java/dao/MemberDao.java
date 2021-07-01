@@ -14,6 +14,7 @@ public class MemberDao {
 	private static MemberDao instance = new MemberDao();
 
 	public static MemberDao getInstance() {
+
 		return instance;
 	}
 	
@@ -24,6 +25,7 @@ public class MemberDao {
 	private final String PASS = "qkrwogud1!";
 	
 	public void insertMember(MemberVO vo) {
+
 
 		
 		try {
@@ -51,6 +53,7 @@ public class MemberDao {
 	}
 
 	public MemberVO selectMember(String uid) {
+
 
 		MemberVO vo = new MemberVO();
 
@@ -85,6 +88,7 @@ public class MemberDao {
 		return vo;
 	}
 	public List<MemberVO> selectMembers() {
+
 
 		
 		List<MemberVO> members = new ArrayList<MemberVO>();

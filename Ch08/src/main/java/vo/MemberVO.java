@@ -41,6 +41,7 @@ public class MemberVO {
 	public void setDep(String dep) {
 		this.dep = Integer.parseInt(dep);
 	}
+
 	public String getRdate() {
 		return rdate;
 	}
