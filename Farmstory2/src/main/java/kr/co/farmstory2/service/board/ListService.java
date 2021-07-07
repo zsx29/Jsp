@@ -13,7 +13,14 @@ public class ListService implements CommonService{
 
 	@Override
 	public String requestProc(HttpServletRequest req, HttpServletResponse resp) {
-		// TODO Auto-generated method stub
+		
+		// 인클루드 초이스 해야함
+		String group = req.getParameter("group");
+		String cate  = req.getParameter("cate");
+		
+		req.setAttribute("group", group);
+		req.setAttribute("cate", cate);
+		
 		return "/board/list.jsp";
 	}
 	
