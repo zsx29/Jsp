@@ -32,8 +32,8 @@
 				<c:forEach var="i" begin="0" end="4">
 					<tr>
 						<td>></td>
-						<td><a href="#">${ latetst[i].title }</a></td>
-						<td>${ latetst[i].rdate }</td>
+						<td><a href="#">${ latests[i].title }</a></td>
+						<td>${ latests[i].rdate }</td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -45,8 +45,8 @@
 				<c:forEach var="i" begin="5" end="9">
 					<tr>
 						<td>></td>
-						<td><a href="#">${ latetst[i].title }</a></td>
-						<td>${ latetst[i].rdate }</td>
+						<td><a href="#">${ latests[i].title }</a></td>
+						<td>${ latests[i].rdate }</td>
 					</tr>
 				</c:forEach>
 			</table>
@@ -58,8 +58,8 @@
 				<c:forEach var="i" begin="10" end="14">
 					<tr>
 						<td>></td>
-						<td><a href="#">${ latetst[i].title }</a></td>
-						<td>${ latetst[i].rdate }</td>
+						<td><a href="#">${ latests[i].title }</a></td>
+						<td>${ latests[i].rdate }</td>
 					</tr>
 				</c:forEach>
 			</table>
