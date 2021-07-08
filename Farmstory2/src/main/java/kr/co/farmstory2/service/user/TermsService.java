@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import kr.co.farmstory2.dao.MemberDao;
 import kr.co.farmstory2.service.CommonService;
-import kr.co.farmstory2vo.TermsVo;
+import kr.co.farmstory2.vo.TermsVo;
 
 
 

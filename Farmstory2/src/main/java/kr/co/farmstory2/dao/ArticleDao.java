@@ -4,18 +4,19 @@ import java.sql.Connection;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 import kr.co.farmstory2.db.DBConfig;
 import kr.co.farmstory2.db.Sql;
-import kr.co.farmstory2vo.ArticleVo;
-import kr.co.farmstory2vo.FileVo;
+import kr.co.farmstory2.vo.ArticleVo;
+import kr.co.farmstory2.vo.FileVo;
 
-// DAO(Database Access Object) ?´?˜?Š¤
+// DAO(Database Access Object) ?ê²¢?ì˜’?ë’ª
 public class ArticleDao {
 	
-	// ?‹±ê¸??†¤
+	// ?ë–›æ¹²??ë„ 
 	private static ArticleDao instance = new ArticleDao();
 	private ArticleDao() {}
 	
@@ -26,7 +27,7 @@ public class ArticleDao {
 	
 //-------------------------------------------------------------------------//
 	
-	// ?˜?´ì§? ê·¸ë£¹
+	// ?ëŸ¹?ì” ï§? æ´¹ëªƒï¼™
 	public int[] getPageGroup(int currentPage, int lastPageNum) {
 		
 		int groupCurrent = (int) Math.ceil(currentPage / 10.0);
@@ -42,19 +43,19 @@ public class ArticleDao {
 		return groups;
 	}
 	
-	// ?Š¤???Š¸ ?„˜ë²?
+	// ?ë’ª???ë“ƒ ?ê½†è¸°?
 	public int getPageStartNum(int total, int start) {
 		return total - start;
 		
 	}
 	
-	// ?Š¤???Š¸ ?˜?´ì§?
+	// ?ë’ª???ë“ƒ ?ëŸ¹?ì” ï§?
 	public int getLimitStart(int currentPage) {
 		return (currentPage - 1) * 10;
 		
 	}
 	
-	// ?˜?´ì§? ?´?™
+	// ?ëŸ¹?ì” ï§? ?ì” ?ë£
 	public int getCurrentPage(String pg) {
 		
 		int currentPage = 1;
@@ -68,7 +69,7 @@ public class ArticleDao {
 		
 	}
 	
-	// ë§ˆì?ë§? ?˜?´ì§? ê³„ì‚°
+	// ï§ë‰?ï§? ?ëŸ¹?ì” ï§? æ€¨ê¾©ê¶›
 	public int getLastPageNum(int total) {
 		
 		int lastPageNum = 0;
@@ -85,19 +86,21 @@ public class ArticleDao {
 		
 	}
 	
-	// ?˜?´ì§? ë²ˆí˜¸ ê³„ì‚°
-	public int selectCountArticle() {
+	// ?ëŸ¹?ì” ï§? è¸°ëŠìƒ‡ æ€¨ê¾©ê¶›
+	public int selectCountArticle(String cate) {
+
 		
 		int total = 0;
 		
 		try{
-			// 1, 2?‹¨ê³?
+			// 1, 2?ë–’æ€¨?
 			Connection conn = DBConfig.getInstance().getConnection();
-			// 3?‹¨ê³?
+			// 3?ë–’æ€¨?
 			PreparedStatement psmt = conn.prepareStatement(Sql.SELECT_COUNT_ARTICLE);
-			// 4?‹¨ê³?
+			psmt.setString(1, cate);
+			// 4?ë–’æ€¨?
 			ResultSet rs = psmt.executeQuery();
-			// 5?‹¨ê³?
+			// 5?ë–’æ€¨?
 			if(rs.next()) {
 				total = rs.getInt(1);
 				
@@ -110,25 +113,25 @@ public class ArticleDao {
 		
 	}
 	
-	// ?Œ“ê¸?
+	// ?ë™æ¹²?
 	public void insertComment(ArticleVo comment) {
 
 
 
 		try{
 			
-		// 1, 2 ?‹¨ê³?
+		// 1, 2 ?ë–’æ€¨?
         Connection conn = DBConfig.getInstance().getConnection();
-		// 3?‹¨ê³?
+		// 3?ë–’æ€¨?
         PreparedStatement psmt = conn.prepareStatement(Sql.INSERT_COMMENT);
         psmt.setInt(1, comment.getParent());
         psmt.setString(2, comment.getContent());
         psmt.setString(3, comment.getUid());
         psmt.setString(4, comment.getRegip());
-		// 4?‹¨ê³?
+		// 4?ë–’æ€¨?
         psmt.executeUpdate();
-		// 5?‹¨ê³?
-		// 6?‹¨ê³?
+		// 5?ë–’æ€¨?
+		// 6?ë–’æ€¨?
         conn.close();
 		}catch(Exception e){
 			
@@ -136,26 +139,26 @@ public class ArticleDao {
 		}
 	}
 	
-	// ?Œ“ê¸? ê°?? ¸?˜¤ê¸?
+	// ?ë™æ¹²? åª›??ì¡‡?ì‚¤æ¹²?
 	public List<ArticleVo> selectComments(String parent) {
 	
 		List<ArticleVo> articles = new ArrayList<>();
 			
 			try{
 				
-				// 1?‹¨ê³?, 2?‹¨ê³?
+				// 1?ë–’æ€¨?, 2?ë–’æ€¨?
 				Connection conn = DBConfig.getInstance().getConnection();
 				
-				// 3?‹¨ê³?
+				// 3?ë–’æ€¨?
 				PreparedStatement psmt = conn.prepareStatement(Sql.SELECT_COMMENTS);
 				psmt.setString(1, parent);
 				
-				// 4?‹¨ê³?
+				// 4?ë–’æ€¨?
 				ResultSet rs = psmt.executeQuery();
 				
-				// 5?‹¨ê³?
+				// 5?ë–’æ€¨?
 				while(rs.next()){
-					//ARTICLE BEAN ?ƒ?„±
+					//ARTICLE BEAN ?ê¹®?ê½¦
 					ArticleVo  article = new ArticleVo();
 					article.setSeq(rs.getInt(1));
 					article.setParent(rs.getInt(2));
@@ -172,7 +175,7 @@ public class ArticleDao {
 					
 					articles.add(article);
 				}
-				// 6?‹¨ê³?
+				// 6?ë–’æ€¨?
 				conn.close();
 				
 				}catch(Exception e){
@@ -184,20 +187,22 @@ public class ArticleDao {
 				
 		}
 	
-	// ê²Œì‹œ?Œ ê°?? ¸?˜¤ê¸?
-	public List<ArticleVo> selectArticles(int start) {
+	// å¯ƒëš¯ë–†?ë™‹ åª›??ì¡‡?ì‚¤æ¹²?
+	public List<ArticleVo> selectArticles(String cate, int start) {
+
 		
 		List<ArticleVo> articles = new ArrayList<>();
 		
 		try{
-			// 1,2Â´ÃœÂ°Ã¨
+			// 1,2ì¨ˆíš¥ì§¸ì±”
 			Connection conn = DBConfig.getInstance().getConnection();
-			// 3Â´ÃœÂ°Ã¨
+			// 3ì¨ˆíš¥ì§¸ì±”
 			PreparedStatement psmt = conn.prepareStatement(Sql.SELECT_ARTICLES);
-			psmt.setInt(1, start);
-			// 4Â´ÃœÂ°Ã¨
+			psmt.setString(1, cate);
+			psmt.setInt(2, start);
+			// 4ì¨ˆíš¥ì§¸ì±”
 			ResultSet rs = psmt.executeQuery();
-			// 5Â´ÃœÂ°Ã¨
+			// 5ì¨ˆíš¥ì§¸ì±”
 			while(rs.next()){
 				ArticleVo article = new ArticleVo();
 				article.setSeq(rs.getInt(1));
@@ -215,35 +220,37 @@ public class ArticleDao {
 				
 				articles.add(article);
 			}
-			// 6Â´ÃœÂ°Ã¨
+			// 6ì¨ˆíš¥ì§¸ì±”
 			conn.close();
+			
 		}catch(Exception e){
+			
 			e.printStackTrace();
 		}
 		
 		return articles;		
 	}// selectArticles end
 	
-	// ê²Œì‹œë¬? ê°?? ¸?˜¤ê¸?
+	// å¯ƒëš¯ë–†è‡¾? åª›??ì¡‡?ì‚¤æ¹²?
 	public ArticleVo selectArticle(String seq) {
 
 
 		
-		// ArticleBean ?ƒ?„±
+		// ArticleBean ?ê¹®?ê½¦
 		ArticleVo article = new ArticleVo();
 		
-		// FileBean ?ƒ?„±
+		// FileBean ?ê¹®?ê½¦
 		FileVo fb = new FileVo();
 		
 		try{
-			// 1, 2?‹¨ê³?
+			// 1, 2?ë–’æ€¨?
 			Connection conn = DBConfig.getInstance().getConnection();
-			// 3 ?‹¨ê³?
+			// 3 ?ë–’æ€¨?
 			PreparedStatement psmt = conn.prepareStatement(Sql.SELECT_ARTICLE);
 			psmt.setString(1, seq);
-			// 4 ?‹¨ê³?
+			// 4 ?ë–’æ€¨?
 			ResultSet rs =  psmt.executeQuery();
-			// 5 ?‹¨ê³?
+			// 5 ?ë–’æ€¨?
 			if(rs.next()) {
 				article.setSeq(rs.getInt(1));
 				article.setParent(rs.getInt(2));
@@ -257,7 +264,7 @@ public class ArticleDao {
 				article.setRegip(rs.getString(10));
 				article.setRdate(rs.getString(11));
 				
-				// ì¶”ê??•„?“œ (JBOARD_FILE)
+				// ç•°ë¶½??ë¸˜?ë±¶ (JBOARD_FILE)
 				fb.setSeq(rs.getInt(12));
 				fb.setParent(rs.getInt(13));
 				fb.setOriName(rs.getString(14));
@@ -268,7 +275,7 @@ public class ArticleDao {
 				article.setFb(fb);
 
 			}
-			// 6 ?‹¨ê³?
+			// 6 ?ë–’æ€¨?
 			conn.close();
 			
 		}catch(Exception e){
@@ -280,7 +287,7 @@ public class ArticleDao {
 		
 	}
 	
-	// ?‹¤?š´ë¡œë“œ ?ŒŒ?¼ ?„ ?ƒ
+	// ?ë–?ìŠ«æ¿¡ì’•ë±¶ ?ë™†?ì”ª ?ê½‘?ê¹®
 	public FileVo selectFile(String seq) {
 
 		FileVo fb = new FileVo();
@@ -311,23 +318,23 @@ public class ArticleDao {
 		return fb;
 	}
 
-	// ?‹¤?š´ë¡œë“œ?ˆ˜ ì¦ê?
+	// ?ë–?ìŠ«æ¿¡ì’•ë±¶?ë‹” ï§ì•·?
 	public void updateFileDownload(String seq) {
 
 
 		try{
-			// 1,2?‹¨ê³?
+			// 1,2?ë–’æ€¨?
 			Connection conn = DBConfig.getInstance().getConnection();
 			
-			// 3?‹¨ê³?
+			// 3?ë–’æ€¨?
 			PreparedStatement psmt = conn.prepareStatement(Sql.UPDATE_FILE_DOWNLOAD);
 			psmt.setString(1, seq);
 			
-			// 4?‹¨ê³?
+			// 4?ë–’æ€¨?
 			psmt.executeUpdate();
 			
-			// 5?‹¨ê³?			
-			// 6?‹¨ê³?
+			// 5?ë–’æ€¨?			
+			// 6?ë–’æ€¨?
 			conn.close();
 		}catch(Exception e){
 			e.printStackTrace();
@@ -336,23 +343,23 @@ public class ArticleDao {
 		
 	}
 	
-	// ì¡°íšŒ?ˆ˜ ì¦ê?
+	// è­°ê³ ì‰¶?ë‹” ï§ì•·?
  	public void updateArticleHit(String seq) {
 
 
 
 		
 		try{
-			// 1, 2?‹¨ê³?
+			// 1, 2?ë–’æ€¨?
 			Connection conn = DBConfig.getInstance().getConnection();
-			// 3 ?‹¨ê³?
+			// 3 ?ë–’æ€¨?
 			PreparedStatement psmt = conn.prepareStatement(Sql.UPDATE_ARTICLE_HIT);
 			psmt.setString(1, seq);
-			// 4 ?‹¨ê³?
+			// 4 ?ë–’æ€¨?
 			psmt.executeUpdate();
-			// 5 ?‹¨ê³? - updateë¬¸ì´?¼ ?—†?Œ
+			// 5 ?ë–’æ€¨? - updateè‡¾ëª„ì” ?ì”ª ?ë¾¾?ì“¬
 			
-			// 6 ?‹¨ê³?
+			// 6 ?ë–’æ€¨?
 			conn.close();
 			
 		}catch(Exception e){
@@ -361,27 +368,27 @@ public class ArticleDao {
 		}
 	}
  	
-    // ?Œ“ê¸? ì¹´ìš´?Š¸
+    // ?ë™æ¹²? ç§»ëŒìŠ«?ë“ƒ
   	public void updateCommentCount(String seq, int type) {
 
 
   		PreparedStatement psmt = null;
  		
  		try{
- 			// 1, 2?‹¨ê³?
+ 			// 1, 2?ë–’æ€¨?
  			Connection conn = DBConfig.getInstance().getConnection();
- 			// 3 ?‹¨ê³?
+ 			// 3 ?ë–’æ€¨?
  			if(type ==1) {
  				psmt = conn.prepareStatement(Sql.UPDATE_COMMENT_COUNT_PLUS); 				
  			}else {
  				psmt = conn.prepareStatement(Sql.UPDATE_COMMENT_COUNT_MINUS); 				
  			}
  			psmt.setString(1, seq);
- 			// 4 ?‹¨ê³?
+ 			// 4 ?ë–’æ€¨?
  			psmt.executeUpdate();
- 			// 5 ?‹¨ê³? - updateë¬¸ì´?¼ ?—†?Œ
+ 			// 5 ?ë–’æ€¨? - updateè‡¾ëª„ì” ?ì”ª ?ë¾¾?ì“¬
  			
- 			// 6 ?‹¨ê³?
+ 			// 6 ?ë–’æ€¨?
  			conn.close();
  			
  		}catch(Exception e){
@@ -390,7 +397,7 @@ public class ArticleDao {
  		}
  	}
   	
-  	// ?Œ“ê¸? ?‚­? œ
+  	// ?ë™æ¹²? ?ê¶˜?ì £
   	public void deleteComment(String seq) {
 
 
@@ -411,7 +418,7 @@ public class ArticleDao {
 		
 	}
  	
-  	// ?Œ“ê¸? ?ˆ˜? •
+  	// ?ë™æ¹²? ?ë‹”?ì ™
   	public int updateComment(String content, String seq) {
 		
 		int result = 0;
@@ -431,7 +438,7 @@ public class ArticleDao {
 		return result;
 	}
   	
-  	// ê¸? ?ˆ˜? •
+  	// æ¹²? ?ë‹”?ì ™
   	public void updateAritcle(String title, String content, String seq){
 
   		
@@ -454,7 +461,7 @@ public class ArticleDao {
   		}
   	}
   	
-  	// ê¸? ?‚­? œ
+  	// æ¹²? ?ê¶˜?ì £
   	public void deleteArticle(String seq, String parent) {
 
   		
@@ -477,6 +484,104 @@ public class ArticleDao {
   		
   	}
   	
+	public int insertArticle(ArticleVo vo) {
+			
+			try{
+				Connection conn = DBConfig.getInstance().getConnection();
+				PreparedStatement psmt = conn.prepareStatement(Sql.INSERT_ARTICLE);
+				psmt.setString(1, vo.getCate());
+				psmt.setString(2, vo.getTitle());
+				psmt.setString(3, vo.getContent());
+				psmt.setInt(4, vo.getFile());
+				psmt.setString(5, vo.getUid());
+				psmt.setString(6, vo.getRegip());
+				
+				psmt.executeUpdate();
+				
+				conn.close();
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+			
+			return selectMaxSeq();
+		}
+	
+	public int selectMaxSeq() {
+			
+			int seq = 0;
+			
+			try {
+				Connection conn = DBConfig.getInstance().getConnection();
+				Statement stmt = conn.createStatement();
+				ResultSet rs = stmt.executeQuery(Sql.SELECT_MAX_SEQ);
+				
+				if(rs.next()) {
+					seq = rs.getInt(1);
+				}
+				
+				conn.close();
+				
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+			return seq;
+		}
+  	
+	public void insertFile(int seq, String fname, String newName) {
+		try {
+			// 1, 2Â´ÃœÂ°Ã¨
+			Connection conn = DBConfig.getInstance().getConnection();
+			// 3Â´ÃœÂ°Ã¨
+			PreparedStatement psmt = conn.prepareStatement(Sql.INSERT_FILE);
+			psmt.setInt(1, seq);
+			psmt.setString(2, fname);
+			psmt.setString(3, newName);
+			
+			// 4Â´ÃœÂ°Ã¨
+			psmt.executeUpdate();
+			// 5Â´ÃœÂ°Ã¨
+			// 6Â´ÃœÂ°Ã¨
+			conn.close();
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+	public List<ArticleVo> selectLatests() {
+
+		
+		List<ArticleVo> latests = new ArrayList<>();
+		
+		try {
+			
+			Connection conn = DBConfig.getInstance().getConnection();
+			PreparedStatement psmt = conn.prepareStatement(Sql.SELECT_LATESTS);
+			ResultSet rs = psmt.executeQuery();
+			
+			while(rs.next()) {
+				
+				ArticleVo article = new ArticleVo();
+			
+				article.setSeq(rs.getInt(1));
+				article.setCate(rs.getString(4));
+				article.setTitle(rs.getString(5));
+				article.setRdate(rs.getString(11).substring(2, 10));
+				
+				latests.add(article);
+				
+			}
+			
+		}catch(Exception e) {
+			
+			e.printStackTrace();
+			
+		}
+		
+		return latests;
+	}
+
 }
 
 

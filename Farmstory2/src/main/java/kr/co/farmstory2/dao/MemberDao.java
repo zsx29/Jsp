@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 
 import kr.co.farmstory2.db.DBConfig;
 import kr.co.farmstory2.db.Sql;
-import kr.co.farmstory2vo.MemberVo;
-import kr.co.farmstory2vo.TermsVo;
+import kr.co.farmstory2.vo.MemberVo;
+import kr.co.farmstory2.vo.TermsVo;
 
 public class MemberDao {
 
@@ -20,8 +20,7 @@ public class MemberDao {
 	}
 
 	public void insertMember(MemberVo mv) {
-		
-		
+
 		try{
 			//1,2´Ü°è
 			Connection conn = DBConfig.getInstance().getConnection();
@@ -74,7 +73,6 @@ public class MemberDao {
 	}
 
 	public MemberVo selectMember(String uid, String pass) {
-
 
 		MemberVo mv = null;
 

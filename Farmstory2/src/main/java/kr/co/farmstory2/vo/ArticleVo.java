@@ -1,4 +1,4 @@
-package kr.co.farmstory2vo;
+package kr.co.farmstory2.vo;
 
 public class ArticleVo {
 

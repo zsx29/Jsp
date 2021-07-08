@@ -1,6 +1,9 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../_header.jsp"%>
-    <div id="wrapper">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/Farmstory2/js/checkUid.js"></script>
+
         <section id="user" class="register">
             <form action="#" method="POST">
                 <table border="1">
@@ -78,5 +81,5 @@
 
             </form>
         </section>
-    </div>    
+
 <%@ include file="../_footer.jsp"%>
